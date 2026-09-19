@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MyselfX Developer — Next.js + FastAPI Starter Kit (Frontend)
+
+Production-ready full-stack starter kit by **MyselfX Developer** built with
+Next.js 14, FastAPI, PostgreSQL, Tailwind CSS and shadcn/ui. Features JWT
+authentication, an admin dashboard and a polished dark/light theme.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Copy `.env.example` to `.env.local` and set:
 
-## Learn More
+- `API_BASE_URL` — the FastAPI backend base URL (e.g. `http://localhost:8000`).
 
-To learn more about Next.js, take a look at the following resources:
+The landing page renders fully without a backend. Login, dashboard, items and
+admin routes need a running FastAPI API.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `npm run dev` — start the development server
+- `npm run build` — production build
+- `npm run start` — start the production server
+- `npm run lint` — lint with Next ESLint
+- `npm run test:ts` — TypeScript type-check (`tsc --noEmit`)
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push this repository to GitHub.
+2. In Vercel, click **Add New → Project** and import the repo.
+   Vercel auto-detects Next.js and uses Node 20+ (this project requires
+   `>= 20.0.0`, Vercel's default is fine).
+3. Add the environment variable `API_BASE_URL` pointing at your live FastAPI
+   backend (optional — the landing page works without it).
+4. Choose a Project Name to set your live URL, e.g. `myselfx-platform` →
+   `https://myselfx-platform.vercel.app`.
+5. Click **Deploy**. Build runs `npm install && npm run build`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+
+- Email: `myselfxdeveloper@gmail.com`
+- Phone / WhatsApp: `+92 344 1586424`
+- Location: Multan, Punjab, Pakistan
