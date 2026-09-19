@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import { Bell, Home, Settings, Package2, Briefcase, Users } from "lucide-react";
+import { Bell, Home, Settings, Briefcase, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 // import {
 //   Card,
@@ -19,16 +18,13 @@ function NavLink({ user }: { user: { email: string } }) {
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link
-            href="https://euclideanai.com"
+            href="/"
             className="flex items-center gap-2 font-semibold"
           >
-            <Image
-              src="/euclideanai-favicon-black-transparent.png"
-              alt="EuclideanAI"
-              width={35}
-              height={35}
-            />
-            <span className="">EuclideanAI</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-teal-500 to-cyan-600 shadow-md shadow-teal-500/20">
+              <Zap className="h-4 w-4 text-white" />
+            </span>
+            <span className="">MyselfX</span>
           </Link>
           <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
             <Bell className="h-4 w-4" />

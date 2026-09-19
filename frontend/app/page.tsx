@@ -1,143 +1,245 @@
-import Image from "next/image";
+import Link from "next/link";
 import { ModeToggle } from "@/components/dark-mode-toggle";
-import { PlusIcon } from "@heroicons/react/20/solid";
+import { HowItWorks } from "@/components/how-it-works";
 import { buttonVariants } from "@/components/ui/button";
-import { FaGithub } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import {
+  ArrowRight,
+  Code2,
+  Database,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Palette,
+  Phone,
+  Rocket,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+
+const BRAND = {
+  name: "MyselfX",
+  fullName: "MyselfX Developer",
+  tagline: "Next.js + FastAPI Starter Kit",
+  email: "myselfxdeveloper@gmail.com",
+  phone: "+92 344 1586424",
+  phoneHref: "tel:+923441586424",
+  whatsappHref: "https://wa.me/923441586424",
+  address: "Multan, Punjab, Pakistan",
+};
+
+const features = [
+  {
+    icon: Code2,
+    title: "Next.js 14 Frontend",
+    description:
+      "App Router, Server Components, built-in caching and a full dashboard UI out of the box.",
+  },
+  {
+    icon: Database,
+    title: "FastAPI Backend",
+    description:
+      "Async Python API with automatic OpenAPI docs, PostgreSQL and SQLAlchemy.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure by Default",
+    description:
+      "JWT authentication, role-based access, password hashing and token handling.",
+  },
+  {
+    icon: Palette,
+    title: "Dark / Light Theme",
+    description:
+      "Polished shadcn/ui components with a gorgeous dark mode that just works.",
+  },
+];
+
+const stack = ["Next.js", "FastAPI", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "TypeScript"];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <Badge variant="outline" className="text-sm gap-2">
-          <FaGithub className="w-6 h-6 text-black dark:text-white" />
-          <Link href="https://github.com/Sheldenburg/nextjs-fastapi-template">
-             Get started
+    <main className="relative flex min-h-screen flex-col overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-x-0 -top-40 h-[32rem] bg-gradient-to-b from-teal-500/15 via-cyan-500/10 to-transparent dark:from-teal-500/20"
+        aria-hidden="true"
+      />
+
+      {/* Navbar */}
+      <header className="sticky top-0 z-20 border-b bg-background/80 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+          <Link href="/" className="flex items-center gap-2 font-semibold">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 shadow-lg shadow-teal-500/30">
+              <Zap className="h-5 w-5 text-white" />
+            </span>
+            <span className="text-lg tracking-tight">
+              {BRAND.name}
+              <span className="ml-1 hidden text-sm font-normal text-muted-foreground sm:inline">
+                Developer
+              </span>
+            </span>
           </Link>
+          <div className="flex items-center gap-2">
+            <ModeToggle />
+            <Link
+              href="/login"
+              className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+            >
+              Login
+            </Link>
+            <Link
+              href="/dashboard"
+              className={cn(
+                buttonVariants({ size: "sm" }),
+                "bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700"
+              )}
+            >
+              Dashboard
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 pt-20 pb-16 text-center sm:px-6 sm:pt-28">
+        <Badge variant="outline" className="mb-6 gap-2 rounded-full px-4 py-1.5 text-sm">
+          <Sparkles className="h-4 w-4 text-teal-500" />
+          Production-ready full-stack starter kit by MyselfX Developer
         </Badge>
-        {/* <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-100 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by&nbsp;
-          <code className="font-mono font-bold">
-            git clone https://github.com/Sheldenburg/nextjs-fastapi-template.git
-          </code>
-        </p> */}
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-center justify-center gap-3 bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://euclideanai.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+        <h1 className="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">
+          Build apps with{" "}
+          <span className="bg-gradient-to-r from-teal-500 via-cyan-600 to-sky-600 bg-clip-text text-transparent">
+            Next.js &amp; FastAPI
+          </span>
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          A complete full-stack foundation — Next.js 14 frontend, FastAPI
+          backend, PostgreSQL database and JWT authentication — so you can focus
+          on shipping features instead of wiring infrastructure.
+        </p>
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/login"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "gap-2 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700"
+            )}
           >
-            <p className="text-base">By </p>
-            <Image
-              src="/euclideanai-logo-black-transparent.svg"
-              alt="EuclideanAI Logo"
-              className="dark:invert"
-              width={130}
-              height={30}
-              priority
-            />
-          </a>
-          <ModeToggle />
+            Get Started <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/dashboard"
+            className={cn(buttonVariants({ variant: "outline", size: "lg" }), "gap-2")}
+          >
+            <Rocket className="h-4 w-4" />
+            View Dashboard
+          </Link>
         </div>
-      </div>
 
-      <div className="relative flex flex-col items-center">
-        <div className="flex h-[200px] place-items-center gap-6">
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={130}
-            height={37}
-            priority
-          />
-          <PlusIcon className="w-8 h-8 text-black dark:text-white" />
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/fastapi.svg"
-            alt="FastAPI Logo"
-            width={60}
-            height={30}
-            priority
-          />
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-2">
+          {stack.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-full border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
-        <Link href="/dashboard" className={cn(buttonVariants())}>
-          Dashboard
-        </Link>
-      </div>
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
-        <a
-          href="https://github.com/Sheldenburg/nextjs-fastapi-template"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Github Repo{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Light-weight template to get started with AI full-stack development.
-          </p>
-        </a>
+      </section>
 
-        <a
-          href="https://fastapi.tiangolo.com/"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            FastAPI{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            One of the most popular Python backend framework with native async
-            support.
-          </p>
-        </a>
+      {/* Features */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="group rounded-2xl border bg-card p-6 transition-all hover:border-teal-500/50 hover:shadow-lg hover:shadow-teal-500/10"
+            >
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 text-white shadow-md shadow-teal-500/20">
+                <feature.icon className="h-5 w-5" />
+              </div>
+              <h3 className="text-lg font-semibold">{feature.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        <a
-          href="https://nextjs.org/"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Nextjs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            One of the most popular React framework with many built-in supports.
-          </p>
-        </a>
+      {/* How it works */}
+      <HowItWorks />
 
-        {/* <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+      {/* Contact */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6">
+        <div className="rounded-3xl border bg-gradient-to-br from-teal-500/10 via-cyan-500/10 to-background p-8 sm:p-12">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Let&apos;s build something great
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Have a project in mind? Reach out — I&apos;d love to hear about it.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <a
+              href={`mailto:${BRAND.email}`}
+              className="rounded-2xl border bg-card p-6 text-center transition-colors hover:border-teal-500/50"
+            >
+              <Mail className="mx-auto mb-3 h-6 w-6 text-teal-500" />
+              <p className="mb-1 text-sm font-semibold text-muted-foreground">Email</p>
+              <p className="break-all text-sm font-medium">{BRAND.email}</p>
+            </a>
+            <a
+              href={BRAND.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border bg-card p-6 text-center transition-colors hover:border-teal-500/50"
+            >
+              <MessageCircle className="mx-auto mb-3 h-6 w-6 text-teal-500" />
+              <p className="mb-1 text-sm font-semibold text-muted-foreground">WhatsApp</p>
+              <p className="text-sm font-medium">{BRAND.phone}</p>
+            </a>
+            <a
+              href={BRAND.phoneHref}
+              className="rounded-2xl border bg-card p-6 text-center transition-colors hover:border-teal-500/50"
+            >
+              <Phone className="mx-auto mb-3 h-6 w-6 text-teal-500" />
+              <p className="mb-1 text-sm font-semibold text-muted-foreground">Phone</p>
+              <p className="text-sm font-medium">{BRAND.phone}</p>
+            </a>
+            <div className="rounded-2xl border bg-card p-6 text-center">
+              <MapPin className="mx-auto mb-3 h-6 w-6 text-teal-500" />
+              <p className="mb-1 text-sm font-semibold text-muted-foreground">Location</p>
+              <p className="text-sm font-medium">{BRAND.address}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="mt-auto border-t bg-muted/30">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 text-sm sm:flex-row sm:px-6">
+          <div className="flex items-center gap-2 font-medium">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-teal-500 to-cyan-600">
+              <Zap className="h-4 w-4 text-white" />
             </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Flexible deployment options to minimise devOps overhang.
-          </p>
-        </a> */}
-      </div>
+            © {new Date().getFullYear()} {BRAND.fullName}. All rights reserved.
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-muted-foreground">
+            <a href={`mailto:${BRAND.email}`} className="hover:text-foreground">
+              {BRAND.email}
+            </a>
+            <span className="hidden h-4 w-px bg-border sm:block" aria-hidden="true" />
+            <a href={BRAND.whatsappHref} className="hover:text-foreground">
+              {BRAND.phone}
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
-import { Home, Settings, LogOut, Briefcase, Users, Menu } from "lucide-react";
+import { Home, Settings, LogOut, Briefcase, Users, Menu, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { redirect, usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -28,17 +27,15 @@ function MobileNavLink({ user }: { user: { email: string } }) {
       <SheetContent side="left" className="flex flex-col">
         <nav className="grid gap-2 text-lg font-medium">
           <Link
-            href="https://euclideanai.com"
+            href="/"
             className="flex items-center gap-2 text-lg font-semibold"
           >
-            <Image
-              src="/euclideanai-favicon-black-transparent.png"
-              alt="EuclideanAI"
-              width={35}
-              height={35}
-            />
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-teal-500 to-cyan-600 shadow-md shadow-teal-500/20">
+              <Zap className="h-4 w-4 text-white" />
+            </span>
 
-            <span className="sr-only">EuclideanAI</span>
+            <span className="sr-only">MyselfX</span>
+            <span>MyselfX</span>
           </Link>
           <Link
             href="/dashboard"

@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 
 export default function initiateClient() {
     const client = createClient<paths>({
-      baseUrl: process.env.API_BASE_URL,
+baseUrl: process.env.API_BASE_URL ?? "",
       headers: {
         Authorization: `Bearer ${cookies().get("access_token")?.value}`
       }
